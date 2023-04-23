@@ -1,0 +1,31 @@
+{
+  "name": "automationframework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypressUI": "cypress open",
+    "e2e": "cypress run --headless",
+    "singleTest": "cypress run --spec ./cypress/e2e/myTest.feature",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
+    "e2ecompleted": "npm run combine-reports && npm run generate-report",
+    "tests": "npm run e2e || npm run e2ecompleted"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^16.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^12.10.0",
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "cypress-multi-reporters": "^1.6.3",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
